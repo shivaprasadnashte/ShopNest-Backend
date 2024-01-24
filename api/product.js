@@ -29,7 +29,7 @@ productRouter.route('/').post(async (req, res) => {
         sold,
         photo1,
         sellerdata,
-        photo2,
+        photo2,  
         photo3,
         photo4,
         photo5,
