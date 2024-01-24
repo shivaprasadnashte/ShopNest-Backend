@@ -1,6 +1,6 @@
 const express = require("express");
 const loginrouter = express.Router();
-const User = require("./module/user");
+const User = require("../module/user");
 
 loginrouter.route("/").get(async (req, res) => {
   const { email, password } = await req.body;

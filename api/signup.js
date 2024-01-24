@@ -1,6 +1,6 @@
 const express = require("express");
 const signuprouter = express.Router();
-const User = require("./module/user");
+const User = require("../module/user");
 
 signuprouter.route('/').post( async (req, res) => {
   const {
