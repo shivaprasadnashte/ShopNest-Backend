@@ -60,6 +60,14 @@ const productSchema = mongoose.Schema ({
         type: Array,
         default: []
     },
+    isinoffer: {
+        type: Boolean,
+        default: false
+    },
+    offer: {
+        type: Number,
+        default: 0
+    },
     sellerdata:{
         type: Object,
         ref: "User",

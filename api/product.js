@@ -18,6 +18,8 @@ productRouter.route('/').post(async (req, res) => {
         sellerdata,
         photo6,
         isselled,
+        isinoffer,
+        offer,
         featuress
     }= req.body
     const product = new productSchema({
@@ -35,6 +37,8 @@ productRouter.route('/').post(async (req, res) => {
         photo5,
         photo6,
         isselled,
+        isinoffer,
+        offer,
         featuress
     })
      product.save()
