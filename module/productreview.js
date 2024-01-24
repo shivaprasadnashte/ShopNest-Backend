@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const reviewSchema = mongoose.Schema({
     userid: {
         type: String,
@@ -24,4 +23,4 @@ const reviewSchema = mongoose.Schema({
     timestamps: true
 })
 
-const review = mongoose.model('review', reviewSchema);
+module.exports = mongoose.model('review', reviewSchema);
