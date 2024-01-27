@@ -1,29 +1,28 @@
 const express = require("express");
 const loginrouter = express.Router();
 const User = require("../module/user");
+const Signupschema = require("../module/user");
 
-loginrouter.route("/").get(async (req, res) => {
-  const { email, password } = await req.body;
-  if (!email || !password) {
-    return res.status(422).json({ error: "Please fill all the fields" });
-  }
-  User.findOne({ email: email })
-    .then((userExist) => {
-      // console.log(userExist)
-      if (!userExist) {
-        return res.status(422).json({ error: "Invalid Email" });
-      }
-      if (userExist.password !== password) {
-        return res.status(422).json({ error: "Invalid Password" });
-      }
-      if (userExist.isseller) {
-        console.log("this is a seller account");
-      }
-      res.status(201).json({ message: "User logged in successfully" }); 
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+loginrouter.route("/").post(async (req, res) => {
+  const response = await req.body;
+  const userin = {
+    email: response.email,
+    password: response.password,
+  };
+
+  // console.log(Signupschema);
+  await Signupschema.findOne({ email: response.email }).then((user) => {
+    console.log(user);
+    if (!user) {
+      res.status(403).json("user not found");
+    }
+   else{
+    if (user.password === response.password) {
+      res.json(user);
+    } else {
+      res.status(401).json("password incorrect");
+    }
+   }
+  } );
 });
-
 module.exports = loginrouter;

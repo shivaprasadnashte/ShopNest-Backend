@@ -6,7 +6,9 @@ const sellerLoginroute =require ('./api/sellerlogin')
 const sellerSignupRouter = require("./api/sellersignup");
 const productRouter =require ("./api/product");
 const reviewRouter = require("./api/review");
+const cors = require("cors");
 const app = express();
+app.use(cors());
 connectDB(); 
 app.use(express.json());
 app.use("/signup",signuprouter);  
